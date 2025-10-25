@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Contact Us - Lets Travel</title>
+
+    <!-- Font Awesome (optional) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+      body {
+        background: #f8f9fa;
+        color: #fff;
+      }
+
+      /* ---------- NAVBAR ---------- */
+      nav {
+        position: relative; /* allows centering nav-links absolutely */
+        z-index: 20; /* sits above hero/social icons */
+        width: 100%;
+        height: 70px;
+        background: #1e1e2f;
+        display: flex;
+        align-items: center;
+        padding: 0 40px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 21;
+      }
+      .logo img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .logo h1 {
+        font-size: 20px;
+        letter-spacing: 1px;
+        color: #fff;
+        margin-left: 2px;
+      }
+
+      /* centered nav links (absolute centering like other pages) */
+      .nav-links {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 30px;
+        z-index: 21;
+      }
+
+      .nav-links a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+        line-height: 70px; /* vertically center inside nav */
+        transition: color 0.25s ease;
+      }
+
+      .nav-links a:hover {
+        color: #00bfff;
+      }
+
+      /* ---------- HERO / BACKGROUND ---------- */
+      .hero {
+        position: relative;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-image: url("./images/background.jpg");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* left heading, right form */
+        padding: 60px;
+        overflow: hidden;
+      }
+
+      /* overlay to darken background for readability */
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        z-index: 1;
+      }
+
+      /* ---------- SOCIAL ICONS (moved into hero) ---------- */
+      .social-icons {
+        position: absolute;
+        left: 20px; /* flush toward left edge */
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        z-index: 3; /* above overlay, below navbar */
+      }
+
+      .social-icons a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 6px;
+        text-decoration: none;
+        color: #fff;
+        font-size: 16px;
+        background: rgba(255, 255, 255, 0.06);
+        transition: transform 0.18s ease, background 0.18s ease,
+          color 0.18s ease;
+      }
+
+      .social-icons a:hover {
+        transform: translateX(6px);
+        background: rgba(0, 191, 255, 0.12);
+        color: #00bfff;
+      }
+
+      /* ---------- LEFT HEADING ---------- */
+      .contact-left {
+        width: 45%;
+        position: relative;
+        z-index: 2; /* above overlay */
+      }
+
+      .contact-left h2 {
+        font-size: 64px;
+        line-height: 1;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+        margin-bottom: 10px;
+      }
+
+      /* ---------- RIGHT FORM (transparent inputs) ---------- */
+      .contact-form {
+        width: 45%;
+        position: relative;
+        z-index: 2;
+        background: rgba(255, 255, 255, 0.03); /* subtle glass */
+        padding: 30px;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        backdrop-filter: blur(4px);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.08); /* transparent look */
+        color: #fff;
+        font-size: 15px;
+        outline: none;
+      }
+
+      /* make placeholders a little lighter */
+      .contact-form ::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .contact-form textarea {
+        min-height: 140px;
+        resize: vertical;
+      }
+
+      .contact-form button {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: none;
+        background: linear-gradient(90deg, #00bfff, #0099cc);
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+      }
+
+      .contact-form button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+      }
+
+      /* ---------- RESPONSIVE ---------- */
+      @media (max-width: 1000px) {
+        .contact-left h2 {
+          font-size: 48px;
+        }
+        .contact-left,
+        .contact-form {
+          width: 48%;
+        }
+      }
+
+      @media (max-width: 800px) {
+        nav {
+          padding: 0 20px;
+        }
+        .nav-links a {
+          font-size: 14px;
+        }
+        .hero {
+          padding: 40px 18px;
+          flex-direction: column;
+          gap: 28px;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+        }
+        .social-icons {
+          left: 12px;
+          top: auto;
+          bottom: 18px;
+          transform: none;
+          flex-direction: row;
+          gap: 12px;
+        }
+        .social-icons a {
+          width: 36px;
+          height: 36px;
+        }
+        .contact-left,
+        .contact-form {
+          width: 100%;
+        }
+        .contact-left h2 {
+          font-size: 40px;
+        }
+        .contact-form {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR (no social icons here) -->
+    <nav>
+      <div class="logo">
+        <img src="./images/logo.png" alt="Logo" />
+        <h1>Lets Travel</h1>
+      </div>
+
+      <!-- centered links -->
+      <div class="nav-links">
+        <a href="travel_recommendation.html">Home</a>
+        <a href="about_us.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <!-- social icons - centered on left side of the hero -->
+      <div class="social-icons" aria-hidden="true">
+        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+
+      <!-- Left side heading -->
+      <div class="contact-left">
+        <h2>Contact Us</h2>
+      </div>
+
+      <!-- Right side transparent contact form -->
+      <form
+        class="contact-form"
+        onsubmit="event.preventDefault(); alert('Message Sent! (demo)');"
+      >
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+  </body>
+</html>
