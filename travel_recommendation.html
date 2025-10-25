@@ -177,6 +177,96 @@
         line-height: 1.6;
       }
 
+      .result-card {
+        background-color: #fff;
+        color: #333;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+      /* SEARCH DROPDOWN AND CARD */
+      #dropdown {
+        background-color: rgba(40, 40, 40, 0.95);
+        position: fixed;
+        width: 30rem;
+        max-width: 90%;
+        padding: 1rem;
+        top: 80px;
+        right: 2%;
+        border-radius: 10px;
+        border: 1px solid white;
+        display: none;
+        z-index: 1001;
+      }
+      .dropdown-header {
+        padding-bottom: 1rem;
+        display: flex;
+        justify-content: flex-end;
+      }
+      #close-btn {
+        padding: 0.5rem 0.8rem;
+        border: none;
+        background-color: rgb(16, 152, 152);
+        color: #fff;
+        font-weight: bolder;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      #close-btn:hover {
+        background-color: rgb(6, 95, 95);
+      }
+      #resultContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        max-height: 60vh;
+        overflow-y: auto;
+      }
+      .result-card {
+        background-color: #fff;
+        color: #333;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+      .local-time {
+        background-color: #e0e0e0;
+        padding: 0.5rem;
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        border-radius: 4px;
+      }
+      .title {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: #111;
+      }
+      .search-img {
+        width: 100%;
+        border-radius: 5px;
+        margin-bottom: 0.5rem;
+      }
+      .description {
+        color: #555;
+      }
+      .btn-visit {
+        padding: 0.5rem 1rem;
+        background-color: rgb(7, 89, 92);
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: block;
+        width: 100px;
+        margin: 1rem auto 0;
+        text-align: center;
+      }
+      .notfound {
+        color: #fff;
+        text-align: center;
+      }
+
       /* Responsive */
       @media (max-width: 900px) {
         .hero-content {
@@ -205,16 +295,25 @@
 
       <div class="nav-links">
         <a href="travel_recommendation.html">Home</a>
-        <a href="./about_us.html">About US</a>
+        <a href="about_us.html">About US</a>
         <a href="contact.html">Contact</a>
       </div>
 
       <div class="search-box">
-        <input type="text" placeholder="Search destinations..." />
-        <button>Search</button>
-        <button class="reset">Reset</button>
+        <input
+          id="searchinput"
+          class="searchinput"
+          placeholder="Search..."
+          type="text"
+        />
+        <button id="searchbtn" class="btn">Search</button>
+        <button id="clearbtn" class="btn">Reset</button>
       </div>
     </nav>
+    <div id="dropdown">
+      <div class="dropdown-header"><button id="close-btn">X</button></div>
+      <div id="resultContainer"></div>
+    </div>
 
     <section class="hero">
       <!-- Social media icons -->
@@ -236,5 +335,6 @@
         </p>
       </div>
     </section>
+    <script src="travel_recommendation.js"></script>
   </body>
 </html>
